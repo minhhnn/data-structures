@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 /**
  * Created by minh on 3/06/17.
  */
-public class SinglyLinkedList<T>{
+public class SinglyLinkedList<T> {
 
     private class Node<T> {
         T data;
@@ -50,7 +50,7 @@ public class SinglyLinkedList<T>{
     }
 
     /**
-     * Insert a new element to the list
+     * Insert a new element to the end of list
      * @param data item to be inserted
      */
     public void insert(T data) {
@@ -95,6 +95,29 @@ public class SinglyLinkedList<T>{
     }
 
     /**
+     *
+     * @return
+     */
+    public SinglyLinkedList<T> revertWithoutChangingOriginalList() {
+        SinglyLinkedList<T> newList = new SinglyLinkedList<>();
+        if (head != null) {
+            Node previous = null;
+            Node current = head;
+            while (current != null) {
+                Node newNode = new Node(current.data);
+                newNode.next = previous;
+                newList.insert((T)newNode.data);
+
+                previous = current;
+                current = current.next;
+            }
+
+        }
+
+        return newList;
+    }
+
+    /**
      * Convert a list to an array
      * @return an array containing all the elements in the list
      */
@@ -103,6 +126,9 @@ public class SinglyLinkedList<T>{
             return (T[]) new Object[0];
         }
         Node current = head;
+
+        //Since we can't use T[] = new T[size] due to type erasure.
+        //We need to use our helper method to create T[] array.
         T[] result = createArray(head.data.getClass(), size);
         int i = 0;
         while (current != null) {

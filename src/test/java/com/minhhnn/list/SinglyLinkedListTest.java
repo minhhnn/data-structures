@@ -88,6 +88,25 @@ public class SinglyLinkedListTest {
 
     }
 
+    @Test
+    public void testRevertWithoutChangingOriginalList() {
+        SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
+        Assert.assertThat("List is empty", list.size(), CoreMatchers.equalTo(0));
+
+        //Generate test list
+        List<Integer> testList = generateTestList();
+
+        // Fill our list with n random integers
+        for (Integer num : testList) {
+            list.insert(num);
+        }
+
+        System.out.println(list.toString());
+        SinglyLinkedList<Integer> newList = list.revertWithoutChangingOriginalList();
+        System.out.println(newList.toString());
+
+    }
+
     /**
      * Helper method, used to generate a list of Integer using built-in List/ArrayList
      * @return test list
