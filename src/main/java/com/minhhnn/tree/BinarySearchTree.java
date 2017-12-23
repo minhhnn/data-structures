@@ -3,20 +3,46 @@ package com.minhhnn.tree;
 public class BinarySearchTree<T extends Comparable<T>> {
     private Node<T> root;
 
-    public void insert(T data) {
-        root = insert(data, root);
+    public void insertRecursive(T data) {
+        root = insertRecursive(data, root);
     }
 
-    private Node insert(T data, Node<T> current) {
+    private Node<T> insertRecursive(T data, Node<T> current) {
         if (current == null) {
             current = new Node<>(data);
         } else if (data.compareTo(current.data) <= 0) {
-            current.left = insert(data, current.left);
+            current.left = insertRecursive(data, current.left);
         } else {
-            current.right = insert(data, current.right);
+            current.right = insertRecursive(data, current.right);
         }
 
         return current;
+    }
+
+    public void insert(T data) {
+        if (root == null) {
+            root = new Node<>(data);
+            return;
+        }
+
+        Node<T> current = root;
+        while (current != null) {
+            if (data.compareTo(current.data) <= 0) {
+                if (current.left != null) {
+                    current = current.left;
+                } else {
+                    current.left = new Node<>(data);
+                    break;
+                }
+            } else {
+                if (current.right != null) {
+                    current = current.right;
+                } else {
+                    current.right = new Node<>(data);
+                    break;
+                }
+            }
+        }
     }
 
     public void printInOrder() {
