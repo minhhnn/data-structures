@@ -4,36 +4,44 @@ import com.minhhnn.graph.Graph;
 import com.minhhnn.graph.UndirectedAdjacencyListGraph;
 import com.minhhnn.graph.Vertex;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by @author minh on 06/01/2018.
- * Depth-First Search
+ * Breadth-First Search
  */
-public class DFS {
+public class BFS {
     public static void main(String[] args) {
         Graph graph = createUndirectedAdjacencyListGraph();
 
         System.out.println("Vertices : " + Arrays.toString(graph.getVertices().toArray()));
         System.out.println("Edges    : " + Arrays.toString(graph.getEdges().toArray()));
 
-        System.out.println("DFS:");
-        printDFS(graph.getVertex("A"));
+        System.out.println("BFS:");
+        printBFS(graph.getVertex("A"));
     }
 
-    private static void printDFS(Vertex currentVertex) {
-        printDFS(currentVertex, new ArrayList<>());
-    }
-
-    private static void printDFS(Vertex currentVertex, List<Vertex> visited) {
-        if (!visited.contains(currentVertex)) {
-            System.out.print(currentVertex + " ");
-            visited.add(currentVertex);
-            for (Vertex v : currentVertex.getAdjacentVertices()) {
-                printDFS(v, visited);
+    private static void printBFS(Vertex currentVertex) {
+        Queue<Vertex> vertices = new LinkedList<>();
+        List<Vertex> visited = new ArrayList<>();
+        vertices.add(currentVertex);
+        while (!vertices.isEmpty()) {
+            Vertex nextVertexToVisit = vertices.remove();
+            if (!visited.contains(nextVertexToVisit)) {
+                System.out.print(nextVertexToVisit + " ");
+                visited.add(nextVertexToVisit);
             }
+
+            for (Vertex v : nextVertexToVisit.getAdjacentVertices()) {
+                vertices.add(v);
+            }
+
+            // The above code can be replace with
+            // vertices.addAll(nextVertexToVisit.getAdjacentVertices());
+        }
+
+        if (!visited.contains(currentVertex)) {
+            visited.add(currentVertex);
         }
     }
 
