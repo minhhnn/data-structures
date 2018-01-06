@@ -1,21 +1,14 @@
 package com.minhhnn.graph;
 
 /**
- *
+ * Created by @author minh on 01/01/2018.
+ * UndirectedAdjacencyList
  */
-public class UndirectedAdjacencyListGraph extends AdjacencyListGraph {
+public class UndirectedAdjacencyList extends AdjacencyList {
 
-    @Override
-    public void addVertex(String label) {
-        Vertex newVertex = new Vertex(label);
-        vertices.add(newVertex);
-    }
-
-
-    @Override
     public void addEdge(Vertex pointA, Vertex pointB) {
         Edge newEdge = new Edge(pointA, pointB);
-        edges.add(newEdge);
+        super.addEdge(newEdge);
 
         // Because this is undirected graph, we need to add adjacent to both vertex
         pointA.addAdjacent(pointB);

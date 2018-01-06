@@ -1,14 +1,11 @@
 package com.minhhnn.graph;
 
-public class DirectedAdjacencyListGraph extends AdjacencyListGraph {
+/**
+ * Created by @author minh on 01/01/2018.
+ * DirectedAdjacencyList
+ */
+public class DirectedAdjacencyList extends AdjacencyList {
 
-    @Override
-    public void addVertex(String label) {
-        Vertex newVertex = new Vertex(label);
-        vertices.add(newVertex);
-    }
-
-    @Override
     public void addEdge(Vertex source, Vertex destination) {
         Edge newEdge = new Edge(source, destination);
         edges.add(newEdge);

@@ -1,7 +1,7 @@
 package com.minhhnn.challenges.graph;
 
 import com.minhhnn.graph.Graph;
-import com.minhhnn.graph.UndirectedAdjacencyListGraph;
+import com.minhhnn.graph.UndirectedAdjacencyList;
 import com.minhhnn.graph.Vertex;
 
 import java.util.ArrayList;
@@ -37,16 +37,14 @@ public class DFS {
         }
     }
 
-    private static UndirectedAdjacencyListGraph createUndirectedAdjacencyListGraph() {
-        UndirectedAdjacencyListGraph graph = new UndirectedAdjacencyListGraph();
+    private static UndirectedAdjacencyList createUndirectedAdjacencyListGraph() {
+        UndirectedAdjacencyList graph = new UndirectedAdjacencyList();
         graph.addVertex("A");
         graph.addVertex("B");
         graph.addVertex("C");
         graph.addVertex("D");
         graph.addVertex("E");
         graph.addVertex("F");
-        graph.addVertex("G");
-        graph.addVertex("H");
 
         graph.addEdge(graph.getVertex("A"), graph.getVertex("B"));
         graph.addEdge(graph.getVertex("A"), graph.getVertex("C"));

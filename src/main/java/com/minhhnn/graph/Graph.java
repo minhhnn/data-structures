@@ -16,10 +16,9 @@ public interface Graph {
 
     /**
      * Add new Edge
-     * @param pointA source
-     * @param pointB destination
+     * @param newEdge new edge
      */
-    void addEdge(Vertex pointA, Vertex pointB);
+    void addEdge(Edge newEdge);
 
     /**
      * Get a vertex by label name

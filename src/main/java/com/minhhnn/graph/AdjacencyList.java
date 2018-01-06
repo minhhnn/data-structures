@@ -8,13 +8,24 @@ import java.util.List;
  *
  * Implement Graph using Adjacency list
  */
-public abstract class AdjacencyListGraph implements Graph {
+public abstract class AdjacencyList implements Graph {
     protected List<Vertex> vertices;
     protected List<Edge> edges;
 
-    public AdjacencyListGraph() {
+    public AdjacencyList() {
         vertices = new ArrayList<>();
         edges = new ArrayList<>();
+    }
+
+    @Override
+    public void addVertex(String label) {
+        Vertex newVertex = new Vertex(label);
+        vertices.add(newVertex);
+    }
+
+    @Override
+    public void addEdge(Edge newEdge) {
+        edges.add(newEdge);
     }
 
     @Override
