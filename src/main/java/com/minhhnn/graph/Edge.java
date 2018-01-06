@@ -27,9 +27,6 @@ public class Edge {
 
     @Override
     public String toString() {
-        return "Edge{" +
-                "pointA=" + pointA +
-                ", pointB=" + pointB +
-                '}';
+        return "{" + pointA + ", "  + pointB + "}";
     }
 }
