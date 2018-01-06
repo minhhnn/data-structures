@@ -29,6 +29,14 @@ public interface Graph {
     Vertex getVertex(String label);
 
     /**
+     * Get a edge by source and destination vertex
+     * @param pointA source vertex
+     * @param pointB destination vertex
+     * @return edge
+     */
+    Edge getEdge(Vertex pointA, Vertex pointB);
+
+    /**
      * Get a list of vertices
      * @return ist of vertices
      */
