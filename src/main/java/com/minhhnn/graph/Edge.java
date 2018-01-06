@@ -24,4 +24,12 @@ public class Edge {
     public void setPointB(Vertex pointB) {
         this.pointB = pointB;
     }
+
+    @Override
+    public String toString() {
+        return "Edge{" +
+                "pointA=" + pointA +
+                ", pointB=" + pointB +
+                '}';
+    }
 }

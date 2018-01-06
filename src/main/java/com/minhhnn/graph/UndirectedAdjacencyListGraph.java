@@ -3,7 +3,7 @@ package com.minhhnn.graph;
 /**
  *
  */
-public class UndirectedAdjacencyListGraph extends AdjacencyListGraph implements Graph {
+public class UndirectedAdjacencyListGraph extends AdjacencyListGraph {
 
     @Override
     public void addVertex(String label) {

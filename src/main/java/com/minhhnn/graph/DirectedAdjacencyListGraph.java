@@ -1,6 +1,6 @@
 package com.minhhnn.graph;
 
-public class DirectedAdjacencyListGraph extends AdjacencyListGraph implements Graph {
+public class DirectedAdjacencyListGraph extends AdjacencyListGraph {
 
     @Override
     public void addVertex(String label) {

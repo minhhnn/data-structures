@@ -15,4 +15,13 @@ public class Vertex {
     public void addAdjacent(Vertex pointB) {
         adjacents.add(pointB);
     }
+
+    public String getLabel() {
+        return label;
+    }
+
+    @Override
+    public String toString() {
+        return label;
+    }
 }
