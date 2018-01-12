@@ -26,12 +26,13 @@ public class StringPermutation {
         return permuations;
     }
 
-    private static void findPermutations(String prefix, String s, Set<String> permutations) {
-        if (s.length() == 1) {
-            permutations.add(prefix + s);
-        } else if (s.length() > 1){
-            for (int i = 0; i < s.length(); i++) {
-                findPermutations(prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1), permutations);
+    private static void findPermutations(String prefix, String suffix, Set<String> permutations) {
+        // We can also stop when suffix length == 1 (when there is only 1 character left
+        if (suffix.length() == 0) {
+            permutations.add(prefix);
+        } else {
+            for (int i = 0; i < suffix.length(); i++) {
+                findPermutations(prefix + suffix.charAt(i), suffix.substring(0, i) + suffix.substring(i + 1), permutations);
             }
         }
 
