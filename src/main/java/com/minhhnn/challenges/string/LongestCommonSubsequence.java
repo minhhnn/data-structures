@@ -13,11 +13,12 @@ public class LongestCommonSubsequence {
         String s2 = "AEDFHR";
         System.out.println("Memoization: Longest common subsequence between '" + s1 + "' and '" + s2 + "' = " + lcsUsingMemo(s1, s2));
         System.out.println("Bottom Up: Longest common subsequence between '" + s1 + "' and '" + s2 + "' = " + lcsUsingBottomUp(s1.toCharArray(), s2.toCharArray()));
-
+        System.out.println("Longest common subsequence between '" + s1 + "' and '" + s2 + "' = " + getLCS(s1.toCharArray(), s2.toCharArray()));
         String s3 = "AGGTAB";
         String s4 = "GXTXAYB";
         System.out.println("Memoization: Longest common subsequence between '" + s3 + "' and '" + s4 + "' = " + lcsUsingMemo(s3, s4));
         System.out.println("Bottom Up: Longest common subsequence between '" + s3 + "' and '" + s4 + "' = " + lcsUsingBottomUp(s3.toCharArray(), s4.toCharArray()));
+        System.out.println("Longest common subsequence between '" + s3 + "' and '" + s4 + "' = " + getLCS(s3.toCharArray(), s4.toCharArray()));
     }
 
     private static int lcsUsingMemo(String s1, String s2) {
@@ -55,15 +56,20 @@ public class LongestCommonSubsequence {
         return result;
     }
 
+    private static int lcsUsingBottomUp(char[] s1, char[] s2) {
+        int[][] dp = new int[s1.length + 1][s2.length + 1];
+        lcsUsingBottomUp(s1, s2, dp);
+
+        return dp[s1.length][s2.length];
+    }
+
     /**
      * Calculate longest common subsequence using memoization
      * @param s1 string 1 char array
      * @param s2 string 2 char array
      * @return
      */
-    private static int lcsUsingBottomUp(char[] s1, char[] s2) {
-        int[][] dp = new int[s1.length + 1][s2.length + 1];
-
+    private static void lcsUsingBottomUp(char[] s1, char[] s2, int[][] dp) {
         for (int i = 0; i <= s1.length; i++) {
             for (int j = 0; j <= s2.length; j++) {
                 if (i == 0 || j == 0) {
@@ -76,6 +82,38 @@ public class LongestCommonSubsequence {
             }
         }
 
-        return dp[s1.length][s2.length];
+
+    }
+
+    /**
+     * Print Longest comoon subsequence
+     * @param s1 string 1
+     * @param s2 string 2
+     * @return lcs
+     */
+    private static String getLCS(char[] s1, char[] s2) {
+        int[][] dp = new int[s1.length + 1][s2.length + 1];
+        lcsUsingBottomUp(s1, s2, dp);
+
+        int lcsLength = dp[s1.length][s2.length];
+        char[] lcs = new char[lcsLength];
+
+        int i = s1.length;
+        int j = s2.length;
+        int index = lcsLength - 1;
+        while (i > 0 && j > 0) {
+            if (s1[i - 1] == s2[j - 1]) {
+                lcs[index] = s1[i - 1];
+                i--;
+                j--;
+                index--;
+            } else if (dp[i - 1][j] > dp[i][j - 1]) {
+                i--;
+            } else {
+                j--;
+            }
+        }
+
+        return new String(lcs);
     }
 }
