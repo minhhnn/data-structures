@@ -12,4 +12,9 @@ public class WeightedEdge extends Edge {
     public int getWeight() {
         return weight;
     }
+
+    @Override
+    public String toString() {
+        return "{" + getPointA() + ", "  + getPointB() + ", " + weight + "}";
+    }
 }
